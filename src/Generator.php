@@ -11,8 +11,8 @@ class Generator
     public const GTIN_13 = 'GTIN-13';
     public const GTIN_14 = 'GTIN-14';
 
-    public const GSIN = 'GSIN';
-    public const SSCC = 'SSCC';
+    public const GSIN = 'GSIN'; // 17 digit
+    public const SSCC = 'SSCC'; // 18 digit
 
     public const ID_KEY_FORMATS = [
         self::GTIN_8,
