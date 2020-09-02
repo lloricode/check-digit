@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "lloricode/check-digit",
+    "description": "",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "lloricode",
+        "check-digit"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/lloricode/check-digit",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Lloric Mayuga Garcia",
+            "email": "lloricode@gmail.com",
             "homepage": "https://spatie.be",
             "role": "Developer"
         }
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Lloricode\\CheckDigit\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Lloricode\\CheckDigit\\Tests\\": "tests"
         }
     },
     "scripts": {
