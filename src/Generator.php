@@ -53,7 +53,7 @@ class Generator
      */
     private static function validateFormat(string $format)
     {
-        if (!in_array($format, self::ID_KEY_FORMATS)) {
+        if (! in_array($format, self::ID_KEY_FORMATS)) {
             throw ValidationException::format($format);
         }
     }
