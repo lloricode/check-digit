@@ -5,7 +5,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/lloricode/check-digit.svg?style=flat-square)](https://packagist.org/packages/lloricode/check-digit)
 
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Check digit formula base on https://www.gs1.org/services/how-calculate-check-digit-manually,
+and tested by https://www.gs1.org/services/check-digit-calculator
 
 ## Installation
 
