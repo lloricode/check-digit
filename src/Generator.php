@@ -58,6 +58,26 @@ class Generator
         }
     }
 
+    private static function sum(int $numbers): int
+    {
+        $sum = 0;
+
+        foreach (array_reverse(str_split((string)$numbers)) as $k => $number) {
+            $multiplier = $k % 2 == 0
+                ? 3
+                : 1;
+
+            $sum += $multiplier * $number;
+        }
+
+        return $sum;
+    }
+
+    private static function roundToNearestTen(int $number): int
+    {
+        return round($number / 10) * 10;
+    }
+
     /**
      * @param  int  $numbers
      * @param  string  $format
@@ -70,6 +90,9 @@ class Generator
         self::validateFormat($format);
         self::validateLength($numbers, $format);
 
-        return 3;
+        $sum = self::sum($numbers);
+        $roundedOf = self::roundToNearestTen($sum);
+
+        return $roundedOf - $sum;
     }
 }
