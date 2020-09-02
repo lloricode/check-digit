@@ -2,6 +2,8 @@
 
 namespace Lloricode\CheckDigit;
 
+use Lloricode\CheckDigit\Exceptions\ValidationException;
+
 class Generator
 {
     public const GTIN_8 = 'GTIN-8';
@@ -21,8 +23,53 @@ class Generator
         self::SSCC,
     ];
 
-    public function execute(string $format = self::GTIN_13): int
+    private const ID_KEY_FORMATS_LENGTH = [
+        self::GTIN_8 => 8,
+        self::GTIN_12 => 12,
+        self::GTIN_13 => 13,
+        self::GTIN_14 => 14,
+        self::GSIN => 17,
+        self::SSCC => 18,
+    ];
+
+    /**
+     * @param  int  $number
+     * @param  string  $format
+     *
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
+    public static function validateLength(int $number, string $format)
     {
+        $actualLength = strlen((string)$number);
+        if (self::ID_KEY_FORMATS_LENGTH[$format] != ($actualLength + 1)) {
+            throw ValidationException::length($number, $actualLength, $format);
+        }
+    }
+
+    /**
+     * @param  string  $format
+     *
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
+    private static function validateFormat(string $format)
+    {
+        if (!in_array($format, self::ID_KEY_FORMATS)) {
+            throw ValidationException::format($format);
+        }
+    }
+
+    /**
+     * @param  int  $numbers
+     * @param  string  $format
+     *
+     * @return int
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
+    public function execute(int $numbers, string $format = self::GTIN_13): int
+    {
+        self::validateFormat($format);
+        self::validateLength($numbers, $format);
+
         return 3;
     }
 }
