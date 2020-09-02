@@ -73,9 +73,9 @@ class Generator
         return $sum;
     }
 
-    private static function roundToNearestTen(int $number): int
+    private static function nearestEqualOrHigherThenMultiplyByTen(int $number): int
     {
-        return round($number / 10) * 10;
+        return ceil($number / 10) * 10;
     }
 
     /**
@@ -92,6 +92,6 @@ class Generator
 
         $sum = self::sum($numbers);
 
-        return self::roundToNearestTen($sum) - $sum;
+        return self::nearestEqualOrHigherThenMultiplyByTen($sum) - $sum;
     }
 }
