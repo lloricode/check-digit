@@ -1,7 +1,7 @@
 # Check Digit
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lloricode/check-digit.svg?style=flat-square)](https://packagist.org/packages/lloricode/check-digit)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lloricode/check-digit/run-tests?label=tests)](https://github.com/lloricode/check-digit/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/lloricode/check-digit/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/lloricode/check-digit.svg?style=flat-square)](https://packagist.org/packages/lloricode/check-digit)
 
 
