@@ -28,5 +28,11 @@ class GenerateTest extends TestCase
 
         $this->assertEquals(6, $checkDigit->execute(7539514528423, Generator::GTIN_14));
         $this->assertEquals(5, $checkDigit->execute(8563251459762, Generator::GTIN_14));
+
+        $this->assertEquals(0, $checkDigit->execute(7896541230123456, Generator::GSIN));
+        $this->assertEquals(3, $checkDigit->execute(7658485040650456, Generator::GSIN));
+
+        $this->assertEquals(6, $checkDigit->execute(95135623050123698, Generator::SSCC));
+        $this->assertEquals(7, $checkDigit->execute(87643802105978513, Generator::SSCC));
     }
 }
