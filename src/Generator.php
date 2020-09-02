@@ -91,8 +91,7 @@ class Generator
         self::validateLength($numbers, $format);
 
         $sum = self::sum($numbers);
-        $roundedOf = self::roundToNearestTen($sum);
 
-        return $roundedOf - $sum;
+        return self::roundToNearestTen($sum) - $sum;
     }
 }
