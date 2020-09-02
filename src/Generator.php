@@ -23,7 +23,7 @@ class Generator
         self::SSCC,
     ];
 
-    private const ID_KEY_FORMATS_LENGTH = [
+    public const ID_KEY_FORMATS_LENGTH = [
         self::GTIN_8 => 8,
         self::GTIN_12 => 12,
         self::GTIN_13 => 13,
