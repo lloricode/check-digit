@@ -32,6 +32,23 @@ class Generator
         self::SSCC => 18,
     ];
 
+    private int $value;
+    private int $checkDigit;
+
+    /**
+     * Generator constructor.
+     *
+     * @param  int  $numbers
+     * @param  string  $format
+     *
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
+    public function __construct(int $numbers, string $format = self::GTIN_13)
+    {
+        $this->checkDigit = self::execute($numbers, $format);
+        $this->value = $numbers.$this->checkDigit;
+    }
+
     /**
      * @param  int  $number
      * @param  string  $format
@@ -85,7 +102,7 @@ class Generator
      * @return int
      * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
      */
-    public function execute(int $numbers, string $format = self::GTIN_13): int
+    private static function execute(int $numbers, string $format = self::GTIN_13): int
     {
         self::validateFormat($format);
         self::validateLength($numbers, $format);
@@ -93,5 +110,15 @@ class Generator
         $sum = self::sum($numbers);
 
         return self::nearestEqualOrHigherThenMultiplyByTen($sum) - $sum;
+    }
+
+    public function getCheckDigit(): int
+    {
+        return $this->checkDigit;
+    }
+
+    public function getValue(): int
+    {
+        return $this->value;
     }
 }

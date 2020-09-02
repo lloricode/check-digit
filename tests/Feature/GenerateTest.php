@@ -13,26 +13,33 @@ class GenerateTest extends TestCase
      */
     public function generator()
     {
-        $checkDigit = new Generator();
-
         # base in https://www.gs1.org/services/check-digit-calculator
 
-        $this->assertEquals(2, $checkDigit->execute(9638527, Generator::GTIN_8));
-        $this->assertEquals(4, $checkDigit->execute(3216549, Generator::GTIN_8));
+        $this->assertEquals(2, (new Generator(9638527, Generator::GTIN_8))->getCheckDigit());
+        $this->assertEquals(4, (new Generator(3216549, Generator::GTIN_8))->getCheckDigit());
 
-        $this->assertEquals(2, $checkDigit->execute(91739456321, Generator::GTIN_12));
-        $this->assertEquals(8, $checkDigit->execute(74185245963, Generator::GTIN_12));
+        $this->assertEquals(2, (new Generator(91739456321, Generator::GTIN_12))->getCheckDigit());
+        $this->assertEquals(8, (new Generator(74185245963, Generator::GTIN_12))->getCheckDigit());
 
-        $this->assertEquals(3, $checkDigit->execute(629104150021, Generator::GTIN_13));
-        $this->assertEquals(6, $checkDigit->execute(123456789876, Generator::GTIN_13));
+        $this->assertEquals(3, (new Generator(629104150021, Generator::GTIN_13))->getCheckDigit());
+        $this->assertEquals(6, (new Generator(123456789876, Generator::GTIN_13))->getCheckDigit());
 
-        $this->assertEquals(6, $checkDigit->execute(7539514528423, Generator::GTIN_14));
-        $this->assertEquals(5, $checkDigit->execute(8563251459762, Generator::GTIN_14));
+        $this->assertEquals(6, (new Generator(7539514528423, Generator::GTIN_14))->getCheckDigit());
+        $this->assertEquals(5, (new Generator(8563251459762, Generator::GTIN_14))->getCheckDigit());
 
-        $this->assertEquals(0, $checkDigit->execute(7896541230123456, Generator::GSIN));
-        $this->assertEquals(3, $checkDigit->execute(7658485040650456, Generator::GSIN));
+        $this->assertEquals(0, (new Generator(7896541230123456, Generator::GSIN))->getCheckDigit());
+        $this->assertEquals(3, (new Generator(7658485040650456, Generator::GSIN))->getCheckDigit());
 
-        $this->assertEquals(6, $checkDigit->execute(95135623050123698, Generator::SSCC));
-        $this->assertEquals(7, $checkDigit->execute(87643802105978513, Generator::SSCC));
+        $this->assertEquals(6, (new Generator(95135623050123698, Generator::SSCC))->getCheckDigit());
+        $this->assertEquals(7, (new Generator(87643802105978513, Generator::SSCC))->getCheckDigit());
+    }
+
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     * @test
+     */
+    public function getGeneratedValue()
+    {
+        $this->assertEquals(876438021059785137, (new Generator(87643802105978513, Generator::SSCC))->getValue());
     }
 }

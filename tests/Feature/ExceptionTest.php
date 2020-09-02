@@ -14,7 +14,7 @@ class ExceptionTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->expectErrorMessage('Invalid format `xxxx`.');
 
-        (new Generator())->execute(1, 'xxxx');
+        (new Generator(1, 'xxxx'));
     }
 
     /** @test */
@@ -23,6 +23,6 @@ class ExceptionTest extends TestCase
         $this->expectException(ValidationException::class);
         $this->expectErrorMessage('Invalid length of `1` for format `GTIN-13`, with value `1`');
 
-        (new Generator())->execute(1, Generator::GTIN_13);
+        (new Generator(1, Generator::GTIN_13));
     }
 }
