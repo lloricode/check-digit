@@ -7,7 +7,10 @@ use Lloricode\CheckDigit\Tests\TestCase;
 
 class GenerateTest extends TestCase
 {
-    /** @test */
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     * @test
+     */
     public function generator()
     {
         $checkDigit = new Generator();
