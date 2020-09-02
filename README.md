@@ -18,6 +18,10 @@ composer require lloricode/check-digit
 ## Usage
 
 ``` php
+
+// Sample usage in testing
+// tests/Feature/GenerateTest.php
+
 use Lloricode\CheckDigit\Generator;
 
 $checkDigit = new Generator();
