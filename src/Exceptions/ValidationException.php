@@ -6,7 +6,6 @@ use Exception;
 
 class ValidationException extends Exception
 {
-
     public static function format(string $format)
     {
         return new static ("Invalid format `$format`.");
