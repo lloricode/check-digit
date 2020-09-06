@@ -46,7 +46,7 @@ class Generator
     public function __construct(int $numbers, string $format = self::GTIN_13)
     {
         $this->checkDigit = self::execute($numbers, $format);
-        $this->value = $numbers.$this->checkDigit;
+        $this->value = ($numbers * 10) + $this->checkDigit;
     }
 
     /**
@@ -84,7 +84,7 @@ class Generator
                 ? 3
                 : 1;
 
-            $sum += $multiplier * $number;
+            $sum += $multiplier * ((int)$number);
         }
 
         return $sum;
@@ -92,7 +92,7 @@ class Generator
 
     private static function nearestEqualOrHigherThenMultiplyByTen(int $number): int
     {
-        return ceil($number / 10) * 10;
+        return (int)ceil($number / 10) * 10;
     }
 
     /**
