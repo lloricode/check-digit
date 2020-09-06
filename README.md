@@ -52,7 +52,7 @@ $this->assertEquals(876438021059785137, (new Generator(87643802105978513, Genera
 ## Testing
 
 ``` bash
-composer test
+vendor/bin/phpunit
 ```
 
 ## Changelog
