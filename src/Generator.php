@@ -55,7 +55,7 @@ class Generator
      *
      * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
      */
-    public static function validateLength(int $number, string $format): void
+    private static function validateLength(int $number, string $format): void
     {
         $actualLength = strlen((string)$number);
         if (self::ID_KEY_FORMATS_LENGTH[$format] != ($actualLength + 1)) {

@@ -3,9 +3,15 @@
 namespace Lloricode\CheckDigit\Exceptions;
 
 use Exception;
+use Throwable;
 
-class ValidationException extends Exception
+final class ValidationException extends Exception
 {
+    private function __construct($message = "", $code = 0, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
+
     public static function format(string $format)
     {
         return new static ("Invalid format `$format`.");
