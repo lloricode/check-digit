@@ -60,7 +60,7 @@ assertSame(2, (new Generator('00123456789012345', Generator::SSCC))->getCheckDig
 ## Testing
 
 ``` bash
-vendor/bin/phpunit
+vendor/bin/pest
 ```
 
 ## Changelog
