@@ -5,22 +5,16 @@ declare(strict_types=1);
 namespace Lloricode\CheckDigit\Exceptions;
 
 use Exception;
-use Throwable;
 
-final class ValidationException extends Exception
+class ValidationException extends Exception
 {
-    private function __construct($message = '', $code = 0, Throwable $previous = null)
+    public static function format(string $format): self
     {
-        parent::__construct($message, $code, $previous);
+        return new self("Invalid format `$format`.");
     }
 
-    public static function format(string $format)
+    public static function length($value, int $actualLength, string $format): self
     {
-        return new static ("Invalid format `$format`.");
-    }
-
-    public static function length($value, int $actualLength, string $format)
-    {
-        return new static ("Invalid length of `$actualLength` for format `$format`, with value `$value`");
+        return new self("Invalid length of `$actualLength` for format `$format`, with value `$value`");
     }
 }
