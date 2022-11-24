@@ -40,7 +40,7 @@ class Generator
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     public function __construct(string|int $numbers, string $format = self::GTIN_13)
     {
-        $this->checkDigit = self::execute((string)$numbers, $format);
+        $this->checkDigit = self::execute((string) $numbers, $format);
         $this->value = ($numbers * 10) + $this->checkDigit;
     }
 
@@ -87,7 +87,7 @@ class Generator
         self::validateFormat($format);
         self::validateLength($numbers, $format);
 
-        $sum = self::sum((int)$numbers);
+        $sum = self::sum((int) $numbers);
 
         return self::nearestEqualOrHigherThenMultiplyByTen($sum) - $sum;
     }
