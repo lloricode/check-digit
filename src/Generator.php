@@ -35,12 +35,18 @@ class Generator
     private int $value;
     private int $checkDigit;
 
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
     public function __construct(string $numbers, string $format = self::GTIN_13)
     {
         $this->checkDigit = self::execute($numbers, $format);
         $this->value = ($numbers * 10) + $this->checkDigit;
     }
 
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
     private static function validateLength(string $number, string $format): void
     {
         $actualLength = strlen((string)$number);
@@ -49,6 +55,9 @@ class Generator
         }
     }
 
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
     private static function validateFormat(string $format): void
     {
         if (! in_array($format, self::ID_KEY_FORMATS)) {
@@ -76,6 +85,9 @@ class Generator
         return (int)ceil($number / 10) * 10;
     }
 
+    /**
+     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
+     */
     private static function execute(string $numbers, string $format = self::GTIN_13): int
     {
         self::validateFormat($format);
