@@ -2,19 +2,12 @@
 
 declare(strict_types=1);
 
+use Lloricode\CheckDigit\Enums\Format;
 use Lloricode\CheckDigit\Exceptions\ValidationException;
 use Lloricode\CheckDigit\Generator;
 
-it('will throw exception when invalid format', function () {
-    (new Generator(1, 'xxxx'));
-})
-    ->throws(
-        ValidationException::class,
-        'Invalid format `xxxx`.'
-    );
-
 it('will throw exception when invalid length', function () {
-    (new Generator(1, Generator::GTIN_13));
+    (new Generator(1, Format::GTIN_13));
 })
     ->throws(
         ValidationException::class,
