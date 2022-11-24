@@ -38,16 +38,16 @@ class Generator
     private int $checkDigit;
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
-    public function __construct(string $numbers, string $format = self::GTIN_13)
+    public function __construct(string|int $numbers, string $format = self::GTIN_13)
     {
-        $this->checkDigit = self::execute($numbers, $format);
+        $this->checkDigit = self::execute((string)$numbers, $format);
         $this->value = ($numbers * 10) + $this->checkDigit;
     }
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     private static function validateLength(string $number, string $format): void
     {
-        $actualLength = strlen((string) $number);
+        $actualLength = strlen($number);
         if (self::ID_KEY_FORMATS_LENGTH[$format] != ($actualLength + 1)) {
             throw ValidationException::length($number, $actualLength, $format);
         }
@@ -87,7 +87,7 @@ class Generator
         self::validateFormat($format);
         self::validateLength($numbers, $format);
 
-        $sum = self::sum($numbers);
+        $sum = self::sum((int)$numbers);
 
         return self::nearestEqualOrHigherThenMultiplyByTen($sum) - $sum;
     }
