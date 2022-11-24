@@ -34,6 +34,16 @@ class GenerateTest extends TestCase
         $this->assertEquals(7, (new Generator(87643802105978513, Generator::SSCC))->getCheckDigit());
     }
 
+    public function testWithStringAndStartWithZero()
+    {
+        $this->assertEquals(7, (new Generator("0012345", Generator::GTIN_8))->getCheckDigit());
+        $this->assertEquals(5, (new Generator("00123456789", Generator::GTIN_12))->getCheckDigit());
+        $this->assertEquals(5, (new Generator("001234567890", Generator::GTIN_13))->getCheckDigit());
+        $this->assertEquals(2, (new Generator("0012345678901", Generator::GTIN_14))->getCheckDigit());
+        $this->assertEquals(3, (new Generator("0012345678901234", Generator::GSIN))->getCheckDigit());
+        $this->assertEquals(2, (new Generator("00123456789012345", Generator::SSCC))->getCheckDigit());
+    }
+
     /**
      * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
      * @test
