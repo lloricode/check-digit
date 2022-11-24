@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lloricode\CheckDigit;
 
 use Lloricode\CheckDigit\Exceptions\ValidationException;
@@ -35,32 +37,26 @@ class Generator
     private int $value;
     private int $checkDigit;
 
-    /**
-     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
-     */
+    /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     public function __construct(string $numbers, string $format = self::GTIN_13)
     {
         $this->checkDigit = self::execute($numbers, $format);
         $this->value = ($numbers * 10) + $this->checkDigit;
     }
 
-    /**
-     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
-     */
+    /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     private static function validateLength(string $number, string $format): void
     {
-        $actualLength = strlen((string)$number);
+        $actualLength = strlen((string) $number);
         if (self::ID_KEY_FORMATS_LENGTH[$format] != ($actualLength + 1)) {
             throw ValidationException::length($number, $actualLength, $format);
         }
     }
 
-    /**
-     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
-     */
+    /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     private static function validateFormat(string $format): void
     {
-        if (! in_array($format, self::ID_KEY_FORMATS)) {
+        if ( ! in_array($format, self::ID_KEY_FORMATS)) {
             throw ValidationException::format($format);
         }
     }
@@ -69,12 +65,12 @@ class Generator
     {
         $sum = 0;
 
-        foreach (array_reverse(str_split((string)$numbers)) as $k => $number) {
+        foreach (array_reverse(str_split((string) $numbers)) as $k => $number) {
             $multiplier = $k % 2 == 0
                 ? 3
                 : 1;
 
-            $sum += $multiplier * ((int)$number);
+            $sum += $multiplier * ((int) $number);
         }
 
         return $sum;
@@ -82,12 +78,10 @@ class Generator
 
     private static function nearestEqualOrHigherThenMultiplyByTen(int $number): int
     {
-        return (int)ceil($number / 10) * 10;
+        return (int) ceil($number / 10) * 10;
     }
 
-    /**
-     * @throws \Lloricode\CheckDigit\Exceptions\ValidationException
-     */
+    /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     private static function execute(string $numbers, string $format = self::GTIN_13): int
     {
         self::validateFormat($format);

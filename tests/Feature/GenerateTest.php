@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Lloricode\CheckDigit\Generator;
 
 it('generator', function () {
@@ -25,15 +27,14 @@ it('generator', function () {
 });
 
 it('generate with string and start with zero', function () {
-    $this->assertEquals(7, (new Generator("0012345", Generator::GTIN_8))->getCheckDigit());
-    $this->assertEquals(5, (new Generator("00123456789", Generator::GTIN_12))->getCheckDigit());
-    $this->assertEquals(5, (new Generator("001234567890", Generator::GTIN_13))->getCheckDigit());
-    $this->assertEquals(2, (new Generator("0012345678901", Generator::GTIN_14))->getCheckDigit());
-    $this->assertEquals(3, (new Generator("0012345678901234", Generator::GSIN))->getCheckDigit());
-    $this->assertEquals(2, (new Generator("00123456789012345", Generator::SSCC))->getCheckDigit());
+    $this->assertEquals(7, (new Generator('0012345', Generator::GTIN_8))->getCheckDigit());
+    $this->assertEquals(5, (new Generator('00123456789', Generator::GTIN_12))->getCheckDigit());
+    $this->assertEquals(5, (new Generator('001234567890', Generator::GTIN_13))->getCheckDigit());
+    $this->assertEquals(2, (new Generator('0012345678901', Generator::GTIN_14))->getCheckDigit());
+    $this->assertEquals(3, (new Generator('0012345678901234', Generator::GSIN))->getCheckDigit());
+    $this->assertEquals(2, (new Generator('00123456789012345', Generator::SSCC))->getCheckDigit());
 });
 
 it('get generated value', function () {
     $this->assertEquals(876438021059785137, (new Generator(87643802105978513, Generator::SSCC))->getValue());
 });
-

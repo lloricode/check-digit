@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Lloricode\CheckDigit\Exceptions\ValidationException;
 use Lloricode\CheckDigit\Generator;
 
