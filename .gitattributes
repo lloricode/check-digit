@@ -11,4 +11,5 @@
 /.php_cs            export-ignore
 /.github            export-ignore
 /psalm.xml          export-ignore
-
+/.php-cs-fixer.dist.php export-ignore
+/CHANGELOG.md       export-ignore
