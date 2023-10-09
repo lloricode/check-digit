@@ -9,7 +9,7 @@ use Lloricode\CheckDigit\Exceptions\ValidationException;
 
 class Generator
 {
-    private int $value;
+    private string $value;
 
     private int $checkDigit;
 
@@ -17,7 +17,7 @@ class Generator
     public function __construct(string|int $numbers, Format $format = Format::GTIN_13)
     {
         $this->checkDigit = self::execute((string) $numbers, $format);
-        $this->value = ($numbers * 10) + $this->checkDigit;
+        $this->value = $numbers.$this->checkDigit;
     }
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
@@ -64,7 +64,7 @@ class Generator
         return $this->checkDigit;
     }
 
-    public function getValue(): int
+    public function getValue(): string
     {
         return $this->value;
     }
