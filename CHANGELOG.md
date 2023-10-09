@@ -2,11 +2,12 @@
 
 All notable changes to `check-digit` will be documented in this file
 
-## unreleased
+## 3.0.1 - 2023-10-09
 
 - Allow using pest v2.
 - Install phpstan
 - Fix issue using phpstan.
+- Add `new()` static function.
 
 ## 3.0.0 - 2023-10-09
 

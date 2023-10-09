@@ -7,7 +7,7 @@ use Lloricode\CheckDigit\Exceptions\ValidationException;
 use Lloricode\CheckDigit\Generator;
 
 it('will throw exception when invalid length', function () {
-    (new Generator(1, Format::GTIN_13()));
+    Generator::new(1, Format::GTIN_13());
 })
     ->throws(
         ValidationException::class,

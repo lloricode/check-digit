@@ -21,6 +21,12 @@ class Generator
     }
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
+    public static function new(string|int $numbers, Format $format = null): self
+    {
+        return new self($numbers, $format);
+    }
+
+    /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
     private static function validateLength(string $number, Format $format): void
     {
         $actualLength = strlen($number);
