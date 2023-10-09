@@ -23,7 +23,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
-          coverage: pcov
+          coverage: xdebug
 
       - name: Setup problem matchers
         run: |
@@ -37,7 +37,7 @@ jobs:
         run:  composer show -D
 
       - name: Execute tests
-        run: XDEBUG_MODE=pcov vendor/bin/pest --coverage
+        run: XDEBUG_MODE=xdebug vendor/bin/pest --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
