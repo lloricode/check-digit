@@ -76,7 +76,7 @@ it('repeat random', function () {
             $result = new Generator($random($format->length()), $format);
             assertMatchesRegularExpression(
                 '/^[0-9]{'.$format->length().'}$/',
-                (string) $result->getValue(),
+                $result->getValue(),
                 'Failed on:'.$i.', format: '.$format->value,
             );
         }
