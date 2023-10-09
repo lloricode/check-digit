@@ -2,6 +2,10 @@
 
 All notable changes to `check-digit` will be documented in this file
 
+## unreleased
+
+- Allow using pest v2
+
 ## 3.0.0 - 2023-10-09
 
 - Add support for PHP 8.0.
