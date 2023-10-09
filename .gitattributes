@@ -11,3 +11,4 @@
 /.php-cs-fixer.dist.php export-ignore
 /CHANGELOG.md       export-ignore
 /pint.json          export-ignore
+/build              export-ignore

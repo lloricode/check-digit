@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lloricode\CheckDigit\Enums;
 
+use Spatie\Enum\Enum;
+
 /**
  * @method static self GTIN_8()
  * @method static self GTIN_12()
@@ -12,7 +14,7 @@ namespace Lloricode\CheckDigit\Enums;
  * @method static self GSIN()
  * @method static self SSCC()
  */
-class Format extends \Spatie\Enum\Enum
+class Format extends Enum
 {
     public function length(): int
     {
@@ -23,6 +25,7 @@ class Format extends \Spatie\Enum\Enum
             self::GTIN_14() => 14,
             self::GSIN() => 17,
             self::SSCC() => 18,
+            default => throw new \Exception('Invalid format.'),
         };
     }
 }
