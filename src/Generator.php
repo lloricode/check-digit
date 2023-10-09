@@ -10,6 +10,7 @@ use Lloricode\CheckDigit\Exceptions\ValidationException;
 class Generator
 {
     private int $value;
+
     private int $checkDigit;
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */

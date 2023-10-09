@@ -1,0 +1,15 @@
+{
+    "preset": "laravel",
+    "exclude": [
+        "build"
+    ],
+    "notPath": [
+    ],
+    "rules": {
+        "declare_strict_types": true,
+        "single_trait_insert_per_statement": true,
+        "new_with_braces" : {
+            "anonymous_class": false
+        }
+    }
+}

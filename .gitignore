@@ -4,6 +4,4 @@ docs
 vendor
 coverage
 .phpunit.result.cache
-.php_cs.cache
 .idea
-.php-cs-fixer.cache
