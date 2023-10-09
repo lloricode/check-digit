@@ -3,6 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lloricode/check-digit.svg?style=flat-square)](https://packagist.org/packages/lloricode/check-digit)
 [![Tests](https://github.com/lloricode/check-digit/actions/workflows/run-tests.yml/badge.svg)](https://github.com/lloricode/check-digit/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/lloricode/check-digit.svg?style=flat-square)](https://packagist.org/packages/lloricode/check-digit)
+[![codecov](https://codecov.io/gh/lloricode/check-digit/graph/badge.svg?token=Q71U726JSI)](https://codecov.io/gh/lloricode/check-digit)
 
 
 Check digit formula base on https://www.gs1.org/services/how-calculate-check-digit-manually,
