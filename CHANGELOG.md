@@ -2,6 +2,17 @@
 
 All notable changes to `check-digit` will be documented in this file
 
+## 3.0.0 - 2023-10-09
+
+- Add support for PHP 8.0.
+- Replace PHP enum with spatie/enum.
+
+## 2.1.0 - 2023-10-09
+
+- Fix inconsistent format result.
+- Use laravel pint format.
+- Add test for PHP 8.3.
+
 ## 2.0.0 - 2022-11-24
 
 - Drop support php8.0 to support php8.1 enums for better strict type checks.
