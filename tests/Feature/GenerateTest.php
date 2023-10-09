@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Lloricode\CheckDigit\Enums\Format;
 use Lloricode\CheckDigit\Generator;
+
 use function PHPUnit\Framework\assertMatchesRegularExpression;
 use function PHPUnit\Framework\assertSame;
 
