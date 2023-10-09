@@ -29,13 +29,13 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-          coverage: xdebug
+          coverage: pcov
 
       - name: Install dependencies
         run: composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
       - name: Execute tests
-        run: composer test-coverage -- --ci
+        run: vendor/bin/pest --ci --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3

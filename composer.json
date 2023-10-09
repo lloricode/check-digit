@@ -34,7 +34,6 @@
         }
     },
     "scripts": {
-        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage",
         "format": "vendor/bin/pint",
         "format-dirty": "vendor/bin/pint --dirty",
         "format-dry-run": "vendor/bin/pint --test"
