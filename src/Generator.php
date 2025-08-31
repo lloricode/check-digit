@@ -14,14 +14,14 @@ class Generator
     private int $checkDigit;
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
-    public function __construct(string|int $numbers, Format $format = null)
+    public function __construct(string|int $numbers, ?Format $format = null)
     {
         $this->checkDigit = self::execute((string) $numbers, $format ?? Format::GTIN_13());
         $this->value = $numbers.$this->checkDigit;
     }
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
-    public static function new(string|int $numbers, Format $format = null): self
+    public static function new(string|int $numbers, ?Format $format = null): self
     {
         return new self($numbers, $format);
     }
@@ -40,7 +40,7 @@ class Generator
         $sum = 0;
 
         foreach (array_reverse(str_split((string) $numbers)) as $k => $number) {
-            $multiplier = $k % 2 == 0
+            $multiplier = $k % 2 === 0
                 ? 3
                 : 1;
 
