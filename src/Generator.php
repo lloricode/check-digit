@@ -7,21 +7,21 @@ namespace Lloricode\CheckDigit;
 use Lloricode\CheckDigit\Enums\Format;
 use Lloricode\CheckDigit\Exceptions\ValidationException;
 
-class Generator
+readonly class Generator
 {
     private string $value;
 
     private int $checkDigit;
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
-    public function __construct(string|int $numbers, ?Format $format = null)
+    public function __construct(string|int $numbers, Format $format = Format::GTIN_13)
     {
-        $this->checkDigit = self::execute((string) $numbers, $format ?? Format::GTIN_13());
+        $this->checkDigit = self::execute((string) $numbers, $format);
         $this->value = $numbers.$this->checkDigit;
     }
 
     /** @throws \Lloricode\CheckDigit\Exceptions\ValidationException */
-    public static function new(string|int $numbers, ?Format $format = null): self
+    public static function new(string|int $numbers, Format $format = Format::GTIN_13): self
     {
         return new self($numbers, $format);
     }
