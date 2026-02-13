@@ -3,6 +3,13 @@ includes:
 
 parameters:
     level: max
+    strictRules:
+        allRules: true
+    type_coverage:
+        return_type: 100
+        param_type: 100
+        property_type: 100
+        declare: 100
     paths:
         - src
     tmpDir: build/phpstan
